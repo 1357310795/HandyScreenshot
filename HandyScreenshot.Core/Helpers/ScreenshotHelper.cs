@@ -78,7 +78,7 @@ namespace HandyScreenshot.Core.Helpers
             return image;
         }
 
-        internal static MemoryStream ToMemoryStream(this System.Drawing.Image image)
+        public static MemoryStream ToMemoryStream(this System.Drawing.Image image)
         {
             var memoryStream = new MemoryStream();
             image.Save(memoryStream, ImageFormat.Png);
@@ -87,7 +87,7 @@ namespace HandyScreenshot.Core.Helpers
             return memoryStream;
         }
 
-        internal static BitmapImage ToBitmapImage(this MemoryStream memoryStream)
+        public static BitmapImage ToBitmapImage(this MemoryStream memoryStream)
         {
             var bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();

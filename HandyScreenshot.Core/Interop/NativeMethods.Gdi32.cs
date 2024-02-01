@@ -12,28 +12,28 @@ namespace HandyScreenshot.Core.Interop
         #region Methods
 
         [DllImport(DllNames.Gdi32, CharSet = CharSet.Unicode)]
-        internal static extern IntPtr CreateDC(string lpszDriver, string lpszDevice, string lpszOutput, IntPtr lpInitData);
+        public static extern IntPtr CreateDC(string lpszDriver, string lpszDevice, string lpszOutput, IntPtr lpInitData);
 
         [DllImport(DllNames.Gdi32)]
-        internal static extern bool DeleteDC(IntPtr hdc);
+        public static extern bool DeleteDC(IntPtr hdc);
 
         [DllImport(DllNames.Gdi32)]
-        internal static extern bool DeleteObject(IntPtr hObject);
+        public static extern bool DeleteObject(IntPtr hObject);
 
         [DllImport(DllNames.Gdi32)]
-        internal static extern bool BitBlt(IntPtr hdcDest, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc, int nXSrc, int nYSrc, TernaryRasterOperations dwRop);
+        public static extern bool BitBlt(IntPtr hdcDest, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc, int nXSrc, int nYSrc, TernaryRasterOperations dwRop);
 
         [DllImport(DllNames.Gdi32)]
-        internal static extern IntPtr CreateCompatibleBitmap(IntPtr hdc, int nWidth, int nHeight);
+        public static extern IntPtr CreateCompatibleBitmap(IntPtr hdc, int nWidth, int nHeight);
 
         [DllImport(DllNames.Gdi32)]
-        internal static extern IntPtr CreateCompatibleDC(IntPtr hdc);
+        public static extern IntPtr CreateCompatibleDC(IntPtr hdc);
 
         [DllImport(DllNames.Gdi32)]
-        internal static extern int SelectObject(IntPtr hdc, IntPtr hGdiObj);
+        public static extern int SelectObject(IntPtr hdc, IntPtr hGdiObj);
 
         [DllImport(DllNames.Gdi32)]
-        internal static extern int GetDeviceCaps(IntPtr hDc, DeviceCap nIndex);
+        public static extern int GetDeviceCaps(IntPtr hDc, DeviceCap nIndex);
 
         #endregion
 
