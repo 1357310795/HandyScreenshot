@@ -10,8 +10,8 @@ namespace HandyScreenshot.Core.Interop
 {
     public static partial class NativeMethods
     {
-        internal delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
-        internal delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);
+        public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
+        public delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);
 
         #region Constants
 
@@ -41,38 +41,38 @@ namespace HandyScreenshot.Core.Interop
         #region Methods
 
         [DllImport(DllNames.User32, CharSet = CharSet.Auto, SetLastError = true)]
-        internal static extern bool RegisterHotKey(IntPtr hWnd, int id, ModifierKeys fsModifiers, int vk);
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, ModifierKeys fsModifiers, int vk);
 
         [DllImport(DllNames.User32, CharSet = CharSet.Auto, SetLastError = true)]
-        internal static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         [DllImport(DllNames.User32)]
-        internal static extern bool EnumDisplayMonitors(IntPtr hdc, IntPtr lprcClip, EnumMonitorsDelegate lpfnEnum, IntPtr dwData);
+        public static extern bool EnumDisplayMonitors(IntPtr hdc, IntPtr lprcClip, EnumMonitorsDelegate lpfnEnum, IntPtr dwData);
 
         [DllImport(DllNames.User32, CharSet = CharSet.Auto)]
-        internal static extern bool GetMonitorInfo(IntPtr hMonitor, ref MONITORINFOEX lpmi);
+        public static extern bool GetMonitorInfo(IntPtr hMonitor, ref MONITORINFOEX lpmi);
 
         [DllImport(DllNames.User32)]
-        internal static extern IntPtr MonitorFromWindow(IntPtr hWnd, uint dwFlags);
+        public static extern IntPtr MonitorFromWindow(IntPtr hWnd, uint dwFlags);
 
         [DllImport(DllNames.User32)]
-        internal static extern int ReleaseDC(IntPtr hWnd, IntPtr hDc);
+        public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDc);
 
         [DllImport(DllNames.User32)]
-        internal static extern IntPtr GetWindowDC(IntPtr hWnd);
+        public static extern IntPtr GetWindowDC(IntPtr hWnd);
 
         [DllImport(DllNames.User32)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool GetPhysicalCursorPos(ref POINT pt);
+        public static extern bool GetPhysicalCursorPos(ref POINT pt);
 
         [DllImport(DllNames.User32, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        internal static extern IntPtr CallNextHookEx(IntPtr idHook, int nCode, IntPtr wParam, IntPtr lParam);
+        public static extern IntPtr CallNextHookEx(IntPtr idHook, int nCode, IntPtr wParam, IntPtr lParam);
 
         [DllImport(DllNames.User32, SetLastError = true)]
-        internal static extern IntPtr SetWindowsHookEx(HookType hookType, HookProc lpfn, IntPtr hMod, uint dwThreadId);
+        public static extern IntPtr SetWindowsHookEx(HookType hookType, HookProc lpfn, IntPtr hMod, uint dwThreadId);
 
         [DllImport(DllNames.User32, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall, SetLastError = true)]
-        internal static extern int UnhookWindowsHookEx(IntPtr idHook);
+        public static extern int UnhookWindowsHookEx(IntPtr idHook);
 
         [DllImport(DllNames.User32, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]

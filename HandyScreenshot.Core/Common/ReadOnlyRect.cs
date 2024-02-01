@@ -68,7 +68,7 @@ namespace HandyScreenshot.Core.Common
 
         public override string ToString() => $"({X}, {Y}) [{Width}, {Height}]";
 
-        internal void Deconstruct(out int x, out int y, out int width, out int height)
+        public void Deconstruct(out int x, out int y, out int width, out int height)
         {
             x = X;
             y = Y;

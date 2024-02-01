@@ -7,7 +7,7 @@ using static HandyScreenshot.Core.Controls.ClipBox;
 
 namespace HandyScreenshot.Core.Controls
 {
-    internal class ClipBoxVisual : DrawingControlBase
+    public class ClipBoxVisual : DrawingControlBase
     {
         private const int BackgroundIndex = 0;
         private const int ClipBoxIndex = 1;

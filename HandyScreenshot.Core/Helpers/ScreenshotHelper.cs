@@ -13,7 +13,7 @@ namespace HandyScreenshot.Core.Helpers
 {
     public static class ScreenshotHelper
     {
-        private static ClipWindow mw;
+        public static ClipWindow mw;
         public delegate void CaptureOKDelegate(bool ok, ClipWindow window);
         public static event CaptureOKDelegate CaptureOK;
         public static void StartScreenshot()
@@ -32,7 +32,7 @@ namespace HandyScreenshot.Core.Helpers
             }
         }
 
-        private static void Mw_CaptureOK(bool ok, ClipWindow sender)
+        public static void Mw_CaptureOK(bool ok, ClipWindow sender)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -44,7 +44,7 @@ namespace HandyScreenshot.Core.Helpers
             CaptureOK(ok, sender);
         }
 
-        private static void SetWindowRect(Window window, ReadOnlyRect rect)
+        public static void SetWindowRect(Window window, ReadOnlyRect rect)
         {
             SetWindowPos(
                 window.GetHandle(),
@@ -56,7 +56,7 @@ namespace HandyScreenshot.Core.Helpers
                 SWP_NOZORDER);
         }
 
-        private static Bitmap CaptureScreen(ReadOnlyRect rect)
+        public static Bitmap CaptureScreen(ReadOnlyRect rect)
         {
             var hdcSrc = GetAllMonitorsDC();
 
@@ -78,7 +78,7 @@ namespace HandyScreenshot.Core.Helpers
             return image;
         }
 
-        internal static MemoryStream ToMemoryStream(this System.Drawing.Image image)
+        public static MemoryStream ToMemoryStream(this System.Drawing.Image image)
         {
             var memoryStream = new MemoryStream();
             image.Save(memoryStream, ImageFormat.Png);
@@ -87,7 +87,7 @@ namespace HandyScreenshot.Core.Helpers
             return memoryStream;
         }
 
-        internal static BitmapImage ToBitmapImage(this MemoryStream memoryStream)
+        public static BitmapImage ToBitmapImage(this MemoryStream memoryStream)
         {
             var bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
@@ -99,7 +99,7 @@ namespace HandyScreenshot.Core.Helpers
             return bitmapImage;
         }
 
-        private static IntPtr GetAllMonitorsDC()
+        public static IntPtr GetAllMonitorsDC()
         {
             return CreateDC("DISPLAY", null, null, IntPtr.Zero);
         }
